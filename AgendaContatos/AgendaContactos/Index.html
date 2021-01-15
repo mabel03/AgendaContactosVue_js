@@ -1,0 +1,179 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Estilo/Estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Agenda de contactos</title>
+</head>
+<body>
+    <div class="container" id="appAgenda">
+        <div class="titulo animate__animated animate__fadeInLeft">
+            <h1>
+                {{titulo}}
+
+               <svg
+                    class="logo"
+                    xmlns="http://www.w3.org/2000/svg"
+                    enable-background="new 0 0 68 68"
+                    viewBox="0 0 68 68"
+                >
+                    <path
+                        d=""
+                    />
+                    <path
+                        d="M41.9 34.1c-3.1-1.5-2-4.9.7-7 .1-.1.2-.1.2-.2 1.4-2 .2-3.6.2-4.4-.1-.3.7-5.3-3.5-7.3-.9-.4-1.7-.6-2.7-.7l-1.4 0c-3.8.2-6.2 3.2-6.2 6.5v1.4c0 .8-1.2 2.3.2 4.4.1.1.1.2.2.2 2.7 2 3.8 5.5.8 7l-7.2 3.2c-1.9.9-3.4 2.6-3.9 4.7-.1.6 0 1.3.4 1.8.4.5 1 .8 1.6.8H51c.6 0 1.2-.3 1.6-.8.4-.5.5-1.1.4-1.8C51.8 37 46.7 36.8 41.9 34.1zM51 42.6H21.4l0-.1c.3-1.5 1.4-2.7 2.7-3.3l7.2-3.2c3.6-1.7 4.5-6.4-.2-10.3-.4-.6-.2-1.2-.1-1.6.9-2.1-.7-5.4 2.7-7 1.5-.7 2.4-.4 3.2-.5.6 0 1.3.2 1.9.5 3 1.4 2.3 5 2.4 5.5 0 1.5.9 2 .2 3.1-4.8 3.9-3.8 8.6-.2 10.3C46.5 38.8 50.2 38.8 51 42.6 51 42.6 51 42.6 51 42.6zM52 51.4H20.3c-.6 0-1 .4-1 1s.4 1 1 1H52c.6 0 1-.4 1-1S52.6 51.4 52 51.4zM23 9c.6 0 1-.4 1-1s-.4-1-1-1h-3c-.6 0-1 .4-1 1s.4 1 1 1H23zM26.8 9h4c.6 0 1-.4 1-1s-.4-1-1-1h-4c-.6 0-1 .4-1 1S26.2 9 26.8 9z"
+                    />
+                </svg>
+                <hr class="new1">
+            </h1>
+        </div>
+        <div class="wrapper">
+              <div class="modal-body">
+        <div class="container-md" id="appAgenda">
+           <div class="titulo animate__animated animate__fadeInLeft"></div>
+            <div class="principal-container">
+                <div class="tit-form animate__animated animate__fadeIn">
+                    <div class="form">                     
+                        <div class="control">
+                            <div class="grupo">
+                                <h5>Nombre</h5>
+                                <input type="text" id="txtNombre" class="form-control" placeholder="Ingrese el nombre" v-model="DatosNombre" v-on:keyup.enter="agregarContacto"/>
+                                <span class="linea"></span>
+                            </div>
+                        </div>
+                          <br>
+                        <div class="control">
+                            <div class="grupo">
+                                <h5>Apellido</h5>
+                                <input type="text" placeholder="Ingrese el apellido" class="form-control" v-model="DatosApellido" v-on:keyup.enter="agregarContacto"/>
+                                <span class="linea"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="control">
+                            <div class="grupo">
+                                <h5>Telefono</h5>
+                                <input type="text" class="form-control" placeholder="Ingrese el telefono" class="form-control" id="telefono" v-model="DatosTelefono" v-on:keyup.enter="agregarContacto"/>
+                                <span class="linea"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="control">
+                            <div class="grupo">
+                                <h5>Correo electronico</h5>
+                                <input type="email" class="form-control" placeholder="Ingrese el email" v-model="DatosEmail" v-on:keyup.enter="agregarContacto"/>
+                                <span class="linea"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="control">
+                            <div class="grupo">
+                                <h5>Direccion</h5>
+                                <input type="text" class="form-control" placeholder="Ingrese el direccion" v-model="DatosDireccion" v-on:keyup.enter="agregarContacto"/>
+                                <span class="linea"></span>
+                            </div>
+                        </div>
+                        <br>
+                        <center>
+                            <div class="botones">
+                                <button type="submit" id="boton-submit" class="btn btn-success boton" @click="agregarContacto">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                      </svg>
+                                    Agregar nuevo contacto</button>
+                         </div>
+                        </center>
+                    </div>
+              </div>
+            </div>
+          </div>
+          <br>
+                    <!---------------------------------------Busqueda de persona------------------------------------>
+</div>
+                          <div id="appAgenda">
+                        <div class="panel panel-default">
+                             <div class="panel-heading" style="font-weight:bold"><span class="glyphicon glyphicon-align-justify"></span>Buscar</div>
+                              <div class="row">
+                                  <div class="search-wrapper panel-heading col-sm-12">
+                                      <input class="form-control" type="text" v-model="buscarNombre" placeholder="Buscar por nombre" />
+                                  </div>                        
+                              </div>
+                              <div class="panel-body" style="max-height: 400px;overflow-y: scroll;">
+
+                    <!-------------------------------------Tabla de informacion-------------------------------------->
+                                  <table  class="table table-light table-hover animate__animated animate__fadeIn" v-if="contactos.length">
+                                      <thead class="bg-info">
+                                          <tr>
+                                              <th>Codigo</th>
+                                              <th>Nombre</th>
+                                              <th>Apellido</th>
+                                              <th>Telefono</th>
+                                              <th>Email</th>
+                                              <th>Direccion</th>
+                                              <th>Editar</th>
+                                              <th>Eliminar</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody v-for="(item, index) of filteredResources">
+                                        <tr>
+                                        <td class="Modificar" >{{index + 1}}</td>
+                                        <td class="Modificar">{{item.nombre}}</td>
+                                        <td class="Modificar">{{item.apellido}}</td>
+                                        <td class="Modificar">{{item.telefono}}</td>
+                                        <td class="Modificar">{{item.email}}</td>
+                                        <td class="Modificar">{{item.direccion}}</td>
+                                        <td class="Modificar">
+                                            <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="boton-edit btn btn-success btn-sm"
+                                            @click="mostrarContacto(index)">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                  </svg>
+                                            </button>                                         
+                                        </td>
+                                        <td class="Modificar">
+            
+                                            <button class="boton-delete btn btn-danger btn-sm" @click="eliminar(index)">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <br>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>   
+                        </div>        
+                </div>
+          </div>
+       </div>   
+    </div>        
+</div>
+    <br>
+    <footer> 
+        <div class="redes">	
+            <br>
+        <center>
+            Direccion: Autopista san isidro. calle Central, #3
+            <br>
+            Correo: 20186272@itla.edu.do
+            <br>
+            Telefono: 824-477-2072
+            <br>
+            Copyright &copy; 2020
+        </center>
+    </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="JavaScript/jquery-3.5.1.js"></script>
+    <script src="JavaScript/jquery.mask.js"></script>
+    <script src="JavaScript/main.js"></script>    
+</body>
+</html>
